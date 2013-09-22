@@ -1,0 +1,55 @@
+﻿@model PostIt.Domain.Entities.Note
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Edit post";
+    
+}
+
+
+<div class="page-header">
+</div>
+
+<div class="panel panel-default" id="forms">
+
+    <div class="panel-heading">Post</div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "Admin"))
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>@if (Model.NoteId == 0)
+                        {
+                    @:Create post
+                        }
+                        else
+                        {   
+                    @:Edit post
+                        }</legend>
+                <div class="form-group">
+
+                    @Html.EditorFor(x => x.NoteId)
+
+                    @Html.LabelFor(x => x.Title)
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                    @*@Html.EditorFor(x => x.Title, new { @class = "form-control" })*@
+
+                    @*@Html.EditorFor(x => x.Text, new { @class = "ckeditor", @id = "text-details" })*@
+
+                    <br>
+                    @*@Html.LabelFor(x => x.Text)*@
+                    @Html.TextAreaFor(x => x.Text, new { @class = "ckeditor form-control", @id = "text-details" })
+
+                    <br>
+                    @Html.LabelFor(x => x.Category)
+                    @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+                    <br>
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    @Html.ActionLink("Cancel and return", "Index", new {}, new { @class = "btn btn-danger" })
+                </div>
+            </fieldset>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PostIt.WebUI.Models.CategoriesInfo>
+
+@*<ul class="menu-list">
+    <li>@Html.ActionLink("Home", "List", "Note")</li>
+    <li>@Html.ActionLink("About", "Index", "About")</li>
+</ul>*@
+
+<div class="category-list">
+    @foreach (var item in Model)
+    {
+        <div class="category-line">
+            @Html.RouteLink(item.Category,
+    new
+        {
+            controller = "Note",
+            action = "List",
+            category = item.Category,
+            page = 1
+        },
+    new
+        {
+            @class = item.Category == ViewBag.SelectedCategory ? "selected" : null
+        }
+    )
+
+        
+            <span class="category-list-count">@item.Number</span>
+        </div>
+    }
+</div>

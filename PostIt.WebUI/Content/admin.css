@@ -1,0 +1,75 @@
+﻿html, body { height: 100%; }
+
+body {
+    font-family: "Roboto", Calibri, sans-serif;
+    font-size: 14px;
+    color: #202020;
+    background: #F8F8F8;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.message {
+    position: fixed;
+    z-index: 100;
+    bottom: 0px;
+    
+    margin-top: 100%;
+    width: 100%;
+    line-height: 2.5em;
+    margin: auto;
+    text-align: center; 
+    color: #202020;
+    font-size: 1.2em;
+    
+}
+.message-info {
+    background: #9acd32;
+}
+.message-deleted {
+    background: #ff4500;
+}
+
+.page-align {
+    min-width: 1000px;
+}
+
+.sb-left {
+    position: absolute;
+    height: 100%;
+    
+    width: 250px;
+    background: #333;
+    float: left;
+    
+}
+
+
+.content-area {
+    margin-left: 280px;
+}
+
+.content {
+    float: left;
+}
+
+.menu-list {
+    float: right;
+}
+
+    .menu-list li {
+        margin: 30px 20px;
+        
+    }
+
+    .menu-list a {
+        display: block;
+        font-size: 1.3em;
+        font-weight: bold;
+        text-decoration: none;
+        color: #CCCCCC;
+    }
+

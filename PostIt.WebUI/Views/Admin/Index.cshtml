@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PostIt.Domain.Entities.Note>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="@TempData["message-class"]"><span>@TempData["message"]</span></div>
+<div class="panel panel-default">
+    <div class="panel-heading">All posts</div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Likes</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NoteId</td>
+                        @*<td class="admin-post-title">@Html.ActionLink(item.Title, "Edit", new { item.NoteId })</td>*@
+                        <td class="admin-post-title">@item.Title</td>
+                        <td class="admin-post-date">@item.Date</td>
+                        <td class="admin-post-likes">@item.Likes</td>
+                        <td class="admin-post-category">@item.Category</td>
+
+                        <td class="admin-post-edit"><a href="@Url.Action("Edit", "Admin", new { NoteId = item.NoteId })"><i class="glyphicon glyphicon-pencil"></i></a></td>
+
+                        <td class="admin-post-btn-delete">@using (Html.BeginForm("Delete", "Admin"))
+                                                          {
+                                                              @Html.Hidden("NoteId", item.NoteId)
+                                                              <a href="" onclick="this.parentNode.submit(); return false;"><i class="glyphicon glyphicon-remove"></i></a>
+@*<input type="submit" value="Delete" class="btn btn-sm btn-danger" />*@
+                                                          }</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="@Url.Action("Create", "Admin")" class="btn btn-lg btn-success">Add new</a>
+@*@Html.ActionLink("Create", "Create", new { }, new { @class = "btn btn-default" })*@

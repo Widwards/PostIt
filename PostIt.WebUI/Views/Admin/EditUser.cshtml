@@ -1,0 +1,93 @@
+﻿@model PostIt.WebUI.Models.ViewModels.UserView
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h2>EditUser</h2>
+@helper createRolesListBox(List<string> items)
+{
+    <select id="UserRoles" multiple="multiple" name="Roles">
+
+
+        @foreach (string item in items)
+        {
+            <option>@item</option>
+        }
+    </select>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Login)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Login)
+            @Html.ValidationMessageFor(model => model.Login)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Roles)
+        </div>
+        <div class="editor-field">
+            @*@Html.ListBoxFor(model => model.Roles, new SelectList(ViewBag.RolesList, "Id", "Name"))*@
+            @*@Html.ListBox("Roles", new SelectList(ViewBag.RolesList, "Id", "Name", Model.SelectedRoles))*@
+            @*@Html.DropDownList("Role", new SelectList(ViewBag.RolesList, "Id", "Name", Model.SelectedRoles))*@
+            @*@Html.DropDownListFor(model => model.Roles, new SelectList(Model.RolesList, "Id", "Name"))*@
+            @Html.ListBox("SelectedRoles", new SelectList(Model.RolesList, "Id", "Name"))
+            @*@Html.ListBox("SelectedRoles", new SelectList(Model.RolesList, "Self", "Name"))*@
+            @Html.ValidationMessageFor(model => model.Roles)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

@@ -1,0 +1,43 @@
+﻿@model PostIt.Domain.Entities.Role
+
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddRole</h2>
+<ul>
+@foreach (var role in ViewBag.AllRoles)
+{
+    <li>@role.Name</li>
+}
+</ul>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

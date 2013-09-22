@@ -1,0 +1,13 @@
+﻿@model PostIt.Domain.Entities.Note
+
+
+<h1 class="note-title">@Model.Title</h1>
+<p class="note-text">@Html.Raw(Model.NoteReadMore())
+    @if (Model.HasReadMoreLink())
+    {
+        @Html.ActionLink("More...", "Note", "Note", new { id = Model.NoteId }, new { @class = "more-link" })
+    }
+
+</p>
+
+

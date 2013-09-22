@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PostIt.Domain.Entities.Note>
+
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Result  for "<b>@ViewBag.query</b>"</h2>
+@*TODO: implement output search result [DONE]*@
+@if (Model != null)
+{
+    foreach (var note in Model)
+    {
+        <header class="search-title"><h2>@Html.ActionLink(note.Title, "Note", "Note", new { Id = note.NoteId}, new { @class="se" })</h2></header>
+    }
+}
+else
+{
+    <b>Try other query</b>
+}

@@ -1,0 +1,11 @@
+﻿@model PostIt.Domain.Entities.Note
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.Title;
+}
+
+
+<h1 class="note-title">@Model.Title</h1>
+
+<p>@Html.Raw(Model.Text)</p>

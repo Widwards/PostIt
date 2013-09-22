@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel</title>
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+
+    @*<link href="@Url.Content("~/Content/reset.css")" rel="stylesheet"/>*@
+
+    <link href="@Url.Content("~/Content/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf")" rel='stylesheet' type='text/css'>
+
+    <script src="@Url.Content("~/Content/bootstrap/dist/css/bootstrap.css")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/dist/css/bootstrap-theme.css")"></script>
+    <link href="@Url.Content("~/Content/bootstrap/dist/css/bootstrap.css")" rel="stylesheet" media="screen"/>
+    @*<link href="@Url.Content("~/Content/bootstrap/dist/css/bootstrap-theme.css")" rel="stylesheet"/>*@
+
+    @* <link href="@Url.Content("~/Content/templates/bootstrap_admin_template/admin-bootstrap.css")"/>*@
+    <link href="~/Content/templates/drone/css/theme.css" rel="stylesheet" />
+
+    @*<link href="@Url.Content("~/Content/admin.css")" rel="stylesheet"/>*@
+
+</head>
+    <body>
+        <style>
+            body {
+                padding-top: 100px;
+            }
+        </style>
+        
+        <section class="container">
+            <nav class="navbar navbar-fixed-top  navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                        <a class="navbar-brand" href="@Url.Action("List", "Note")">Admin panel</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Posts", "Index", "Admin", new { }, new { @class = "btn btn-sm" })</li>
+                            <li>@Html.ActionLink("Links", "", "")</li>
+                            <li>@Html.ActionLink("Comments", "", "")</li>
+                            <li>@Html.ActionLink("Pages", "", "")</li>
+                            <li>@Html.ActionLink("Users", "Users", "Admin")</li>
+                            <li>@Html.ActionLink("Settings", "", "")</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="content-area">
+                <div class="content">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+        <script src="@Url.Content("~/Scripts/jquery-2.0.3.js")"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.10.3.js")"></script>
+        <script src="@Url.Content("~/Infrastructure/ckeditor_full/ckeditor.js")"></script>
+        <script src="@Url.Content("~/Content/bootstrap/dist/js/bootstrap.js")"></script>
+    </body>
+</html>

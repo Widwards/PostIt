@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/Content/reset.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/Content/apollo2.css")" rel="stylesheet"/>
+
+    <script src="@Url.Content("~/Scripts/jquery-2.0.3.intellisense.js")"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        @*<div class="main-img-title"></div>*@
+        @Html.ActionLink(" ", "List", "Note", new {}, new { @class="main-img-title" })
+        <h1 class="main-title">POST IT</h1>
+    </header>
+    <div id="search-area">
+        @using (Html.BeginForm("Search", "Note", FormMethod.Get))
+        {
+            <input type="search" placeholder="Search" name="Query" />
+        }
+    </div>
+    <div class="page-align">
+        <div id="content">
+            @RenderBody()
+        </div>
+        <div id="sb-container">
+            <div class="about-container"></div>
+            <div class="menu-container">
+                @{Html.RenderAction("Menu", "Menu");}
+            </div>
+        </div>
+        <div class="wrap"></div>
+        <div class="clear"></div>
+    </div>
+
+    <footer id="page-footer">@Html.Partial("Footer")</footer>
+</body>
+</html>

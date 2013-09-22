@@ -1,0 +1,18 @@
+﻿@model PostIt.WebUI.Models.NotesListViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Все записи";
+}
+
+@foreach (var n in Model.Notes)
+{
+    <section class="post-preview">
+
+        @{ Html.RenderPartial("NotePreview", n); }
+        @{ Html.RenderPartial("NoteInfo", n); }
+    </section>
+}
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, m => Url.Action("List", new { page = m, category = Model.CurrentCategory }))
+</div>
